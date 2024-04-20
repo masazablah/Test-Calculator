@@ -1,4 +1,4 @@
-function cacl (a, operator, b){
+function calc (a, operator, b){
     switch (operator){
         case '+':
       return a + b;
