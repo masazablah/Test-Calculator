@@ -56,4 +56,9 @@ describe('Calculator', () => {
    it('should ignore numbers bigger than 1000', () => {
     expect(calc(2, '+', 1001)).toBe(2);
   });
+
+   // Test case: Handling both addition and subtraction
+   it('should handle both addition and subtraction correctly', () => {
+    expect(calc(10, '+', 5, '-', 3)).toBe(12);
+  });
 });
