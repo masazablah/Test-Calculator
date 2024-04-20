@@ -1,46 +1,18 @@
 // calculator.js
 function calc(...args) {
     if (args.length < 3 || args.length % 2 === 0) {
-      throw new Error('Invalid input type');
+      throw new Error('Invalid input');
     }
-
-    
-    for (let i = 1; i < args.length; i += 2) {
-        const operator = args[i];
-        const operand = args[i + 1];
   
-        if (operand > 1000) {
-          continue;
-        }
+    let result = args[0];
+    for (let i = 1; i < args.length; i += 2) {
+      const operator = args[i];
+      const operand = args[i + 1];
 
-        switch (operator) {
-            case '*':
-                args[i-1]*= operand;
-                args[i] = '';
-                args[i+1] = '';
-                break;
-            case '/':
-                if(operand === 0){
-                    throw new Error('Division by zero');
-                }
-                args[i-1]/= operand;
-                args[i] = '';
-                args[i+1] = '';
-                break;
-        }
-    }
-        args = args.filter(item => item !== '');
-        let result = +args[0];
-
-        for (let i = 1; i < args.length; i += 2) {
-            const operator = args[i];
-            const operand = +args[i + 1]; // Convert the operand to a number
-        
-            
-            if (operand > 1000) {
-              continue;
-            }
-
+      if (operand > 1000) {
+        continue;
+      }
+  
       switch (operator) {
         case '+':
           result += operand;
@@ -48,12 +20,21 @@ function calc(...args) {
         case '-':
           result -= operand;
           break;
-        
+        case '*':
+          result *= operand;
+          break;
+        case '/':
+          if (operand === 0) {
+            throw new Error('Division by zero');
+          }
+          result /= operand;
+          break;
         default:
           throw new Error('Invalid operator');
       }
     }
     return result;
   }
-
+  
   module.exports = calc;
+  
