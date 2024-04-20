@@ -8,6 +8,10 @@ function calc(...args) {
     for (let i = 1; i < args.length; i += 2) {
       const operator = args[i];
       const operand = args[i + 1];
+
+      if (operand > 1000) {
+        continue;
+      }
   
       switch (operator) {
         case '+':
